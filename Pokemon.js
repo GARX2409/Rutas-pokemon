@@ -1,87 +1,159 @@
 /*
-	Rutas Pokémon y Exploración — Guía Completa (1 hora)
+Aquí tienes todo organizado, limpio y listo para usar como guía, explicación y práctica del tema var vs let
+aplicando el ejercicio de “Rutas Pokémon y Exploración”.
 
-	Objetivos prácticos:
-	- Usar `const` para crear un mapa de rutas.
-	- Usar `let` dentro de ciclos.
-	- Comparar el comportamiento de `var` vs `let` dentro de un `for`.
-	- Generar un recorrido y un "mapa" visual de rutas visitadas.
+Te lo dejo ordenado por secciones, bien explicado y con código correcto, tal como lo necesitas para la actividad.
 
-	Ejecutar: `node Pokemon.js` (en una terminal con Node.js instalado).
-*/
+---
 
-// 1) Definir rutas
+🧭 Rutas Pokémon y Exploración — Guía Completa (1 hora)
+
+---
+
+✅ Objetivo en JavaScript
+
+Usar const para crear un mapa de rutas.
+
+Usar let dentro de ciclos.
+
+Comparar el comportamiento de var vs let dentro de un for.
+
+Generar un recorrido y un “mapa” visual de rutas visitadas.
+
+
+---
+
+🔹 1. Definir rutas (10 min)
+
 const rutas = ["Ruta 1", "Ruta 2", "Ruta 3", "Ruta 4", "Ruta 5"];
-console.log("\n--- 1. Definir rutas ---");
 console.log("Rutas:", rutas);
 
+✔️ Explicación:
 
-// 2) Recorrido usando var
-// Notas: 'var' tiene alcance de función (o global) y no respeta el bloque del for.
+const se usa porque la lista de rutas no cambiará.
+
+No vamos a reasignar la variable rutas, solo leerla.
+
+
+---
+
+🔹 2. Recorrido usando var (10–15 min)
+
 var ultimaRutaVisitada = "";
 
-function recorridoConVar(lista) {
-	console.log("\n--- 2. Recorrido usando var ---");
-	for (var i = 0; i < lista.length; i++) {
-		console.log("Visitando:", lista[i]);
-		ultimaRutaVisitada = lista[i];
-	}
-
-	console.log("Última ruta visitada con var:", ultimaRutaVisitada);
-	// i sigue existiendo aquí porque se declaró con var
-	console.log("Valor de i después del for con var:", i);
+for (var i = 0; i < rutas.length; i++) {
+	console.log("Visitando:", rutas[i]);
+	ultimaRutaVisitada = rutas[i];
 }
 
+console.log("Última ruta visitada con var:", ultimaRutaVisitada);
+console.log("Valor de i después del for con var:", i);
 
-// 3) Recorrido usando let
-// Notas: 'let' tiene alcance de bloque; la variable del for no estará disponible fuera.
+🔍 Qué deben observar los estudiantes
+
+El for termina cuando i llega a 5 (porque hay 5 rutas).
+
+Con var, la variable i sigue existiendo fuera del for.
+
+
+📌 Conclusión del grupo (escriben en su cuaderno):
+
+> Con var, la variable del ciclo no se limita al bloque, sale del for y se puede usar afuera.
+
+
+
+---
+
+🔹 3. Recorrido usando let (15–20 min)
+
 let ultimaRutaVisitadaLet = "";
 
-function recorridoConLet(lista) {
-	console.log("\n--- 3. Recorrido usando let ---");
-	for (let j = 0; j < lista.length; j++) {
-		console.log("Visitando con let:", lista[j]);
-		ultimaRutaVisitadaLet = lista[j];
-	}
-
-	console.log("Última ruta visitada con let:", ultimaRutaVisitadaLet);
-	// Si descomentas la siguiente línea obtendrás un ReferenceError porque j no existe fuera del for
-	// console.log(j);
+for (let j = 0; j < rutas.length; j++) {
+	console.log("Visitando con let:", rutas[j]);
+	ultimaRutaVisitadaLet = rutas[j];
 }
 
+// console.log(j); // Activar esto para probar qué pasa
 
-// 4) Mapa visual — impresión sencilla en consola
-function imprimirMapa(lista) {
-	console.log("\n--- 4. Mapa visual ---");
-	// Forma simple: Inicio -> Ruta 1 -> Ruta 2 -> ... -> Fin
-	const recorrido = ["Inicio", ...lista, "Fin"];
-	console.log(recorrido.join(" → "));
+🔍 Qué deben observar
 
-	// Otra representación: líneas por elemento
-	console.log('\nRepresentación por líneas:');
-	for (let k = 0; k < recorrido.length; k++) {
-		if (k === 0) console.log("(Inicio)");
-		console.log(`  ${recorrido[k]}`);
-		if (k === recorrido.length - 1) console.log("(Fin)");
-	}
+Con let, el estudiante prueba si j existe fuera del ciclo.
+
+Si quitan el comentario y ejecutan console.log(j) → da error, porque j desaparece fuera del for.
+
+
+📌 Conclusión del grupo:
+
+> Con let, la variable del ciclo solo existe dentro del bloque del for. Afuera no funciona.
+
+
+
+---
+
+🔹 4. Mapa visual (10–15 min)
+
+En una hoja dibujan así:
+
+Inicio → Ruta 1 → Ruta 2 → Ruta 3 → Ruta 4 → Ruta 5 → Fin
+
+Y debajo escriben:
+
+✏️ Explicación final
+
+✔ Con var:
+La variable del ciclo sobrevive después del for.
+Por eso i todavía existe y tiene un valor.
+
+✔ Con let:
+La variable del ciclo solo vive dentro del for.
+Fuera del for, desaparece.
+
+
+---
+
+🎉 Resultado Final del Taller
+
+Un recorrido completo impreso en consola.
+
+El valor de la última ruta visitada usando var y usando let.
+
+Un mapa visual de rutas conectadas.
+
+Una comparación clara entre var y let.
+
+
+---
+
+Si quieres te lo convierto en formato PDF, diapositivas, o en una cartilla para el salón.
+*/
+
+// Código ejecutable que corresponde a los ejemplos anteriores
+const rutas = ["Ruta 1", "Ruta 2", "Ruta 3", "Ruta 4", "Ruta 5"];
+console.log('\n--- Ejecución de los ejemplos (parte práctica) ---');
+
+// Recorrido con var
+var ultimaRutaVisitada = "";
+for (var i = 0; i < rutas.length; i++) {
+	console.log("Visitando:", rutas[i]);
+	ultimaRutaVisitada = rutas[i];
 }
+console.log("Última ruta visitada con var:", ultimaRutaVisitada);
+console.log("Valor de i después del for con var:", i);
 
-
-// Función principal para demostrar todo el flujo
-function main() {
-	recorridoConVar(rutas);
-	recorridoConLet(rutas);
-	imprimirMapa(rutas);
-
-	console.log('\n✏️ Explicación final:');
-	console.log('✔ Con var: la variable del ciclo sobrevive después del for (ámbito de función/global).');
-	console.log('✔ Con let: la variable del ciclo solo existe dentro del bloque del for (ámbito de bloque).');
-	console.log('\n🎉 Resultado: recorrido impreso, últimas rutas y mapa visual.');
+// Recorrido con let
+let ultimaRutaVisitadaLet = "";
+for (let j = 0; j < rutas.length; j++) {
+	console.log("Visitando con let:", rutas[j]);
+	ultimaRutaVisitadaLet = rutas[j];
 }
+console.log("Última ruta visitada con let:", ultimaRutaVisitadaLet);
 
+// Mapa visual simple
+console.log('\nMapa visual:');
+console.log(["Inicio", ...rutas, "Fin"].join(' → '));
 
-// Ejecutar cuando se llame directamente con Node
-if (typeof require !== 'undefined' && require.main === module) {
-	main();
-}
+console.log('\n✏️ Explicación final:');
+console.log('✔ Con var: la variable del ciclo sobrevive después del for.');
+console.log('✔ Con let: la variable del ciclo solo existe dentro del for.');
+
 
