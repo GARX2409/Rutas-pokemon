@@ -128,32 +128,53 @@ Si quieres te lo convierto en formato PDF, diapositivas, o en una cartilla para 
 */
 
 // Código ejecutable que corresponde a los ejemplos anteriores
+
+// 1) Definir rutas
+// Usamos `const` porque no vamos a reasignar la variable `rutas`.
+// Ojo: `const` evita reasignar la variable, pero los elementos del array sí pueden
+// modificarse (ej. `rutas.push(...)` funcionaría). Aquí tratamos la lista como fija.
 const rutas = ["Ruta 1", "Ruta 2", "Ruta 3", "Ruta 4", "Ruta 5"];
 console.log('\n--- Ejecución de los ejemplos (parte práctica) ---');
 
-// Recorrido con var
-var ultimaRutaVisitada = "";
+// 2) Recorrido usando var
+// `var` tiene alcance de función (o global si no está en función). No respeta el bloque `{}`
+// del `for`, por eso la variable `i` seguirá existiendo después del bucle.
+var ultimaRutaVisitada = ""; // almacenará la última ruta visitada usando var
 for (var i = 0; i < rutas.length; i++) {
+	// Dentro del bucle usamos `i` (declarada con var)
 	console.log("Visitando:", rutas[i]);
+	// Actualizamos la variable externa `ultimaRutaVisitada`
 	ultimaRutaVisitada = rutas[i];
 }
+// Después del for, `ultimaRutaVisitada` contiene el último elemento visitado
 console.log("Última ruta visitada con var:", ultimaRutaVisitada);
+// Como `i` fue declarada con var, todavía existe aquí y su valor es rutas.length (5)
 console.log("Valor de i después del for con var:", i);
 
-// Recorrido con let
-let ultimaRutaVisitadaLet = "";
+// 3) Recorrido usando let
+// `let` tiene alcance de bloque: la variable usada en el for (aquí `j`) solo vive
+// dentro de las llaves del bucle. Afuera no existe y al intentar acceder dará error.
+let ultimaRutaVisitadaLet = ""; // almacenará la última ruta visitada usando let
 for (let j = 0; j < rutas.length; j++) {
+	// `j` está disponible solo dentro de este bloque
 	console.log("Visitando con let:", rutas[j]);
 	ultimaRutaVisitadaLet = rutas[j];
 }
+// Aquí mostramos la última ruta guardada por el bucle con let
 console.log("Última ruta visitada con let:", ultimaRutaVisitadaLet);
+// Si descomentases `console.log(j)` aquí obtendrías `ReferenceError: j is not defined`.
 
-// Mapa visual simple
+// 4) Mapa visual simple
+// Usamos spread `...rutas` para crear un array que incluya Inicio y Fin alrededor
+// de las rutas visitadas. `join(' → ')` une los elementos con flechas.
 console.log('\nMapa visual:');
 console.log(["Inicio", ...rutas, "Fin"].join(' → '));
 
+// Explicación final resumida (útil para el cierre del taller)
 console.log('\n✏️ Explicación final:');
-console.log('✔ Con var: la variable del ciclo sobrevive después del for.');
-console.log('✔ Con let: la variable del ciclo solo existe dentro del for.');
+console.log('✔ Con var: la variable del ciclo sobrevive después del for (ámbito de función/global).');
+console.log('✔ Con let: la variable del ciclo solo existe dentro del bloque del for (ámbito de bloque).');
+
+// Fin del script
 
 
