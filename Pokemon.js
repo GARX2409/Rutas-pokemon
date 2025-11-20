@@ -1,180 +1,64 @@
-/*
-Aquí tienes todo organizado, limpio y listo para usar como guía, explicación y práctica del tema var vs let
-aplicando el ejercicio de “Rutas Pokémon y Exploración”.
-
-Te lo dejo ordenado por secciones, bien explicado y con código correcto, tal como lo necesitas para la actividad.
-
----
-
-🧭 Rutas Pokémon y Exploración — Guía Completa (1 hora)
-
----
-
-✅ Objetivo en JavaScript
-
-Usar const para crear un mapa de rutas.
-
-Usar let dentro de ciclos.
-
-Comparar el comportamiento de var vs let dentro de un for.
-
-Generar un recorrido y un “mapa” visual de rutas visitadas.
-
-
----
-
-🔹 1. Definir rutas (10 min)
-
+//1. Definir Rutas (Uso de const)
+//Primero definimos el mapa. Usamos const porque la referencia al arreglo de rutas no debería cambiar durante la ejecución del programa (no vamos a cambiar el mapa entero por otro objeto).
 const rutas = ["Ruta 1", "Ruta 2", "Ruta 3", "Ruta 4", "Ruta 5"];
-console.log("Rutas:", rutas);
+console.log("Rutas disponibles para explorar:", rutas);
+//Explicación: Al usar const, aseguramos que la variable rutas siempre apunte a este arreglo específico. Es la base inmutable de nuestro mapa.
 
-✔️ Explicación:
-
-const se usa porque la lista de rutas no cambiará.
-
-No vamos a reasignar la variable rutas, solo leerla.
-
-
----
-
-🔹 2. Recorrido usando var (10–15 min)
-
+//---------------------------------
+//2. Recorrido usando var (Uso de var)
+//Aquí usamos la forma antigua de declarar variables. Presta atención a lo que sucede con la variable contadora i.
 var ultimaRutaVisitada = "";
 
+// Iniciamos el ciclo con var
 for (var i = 0; i < rutas.length; i++) {
-	console.log("Visitando:", rutas[i]);
-	ultimaRutaVisitada = rutas[i];
+  console.log("Visitando:", rutas[i]);
+  ultimaRutaVisitada = rutas[i];
 }
 
-console.log("Última ruta visitada con var:", ultimaRutaVisitada);
+console.log("--- Resultados con VAR ---");
+console.log("Última ruta visitada:", ultimaRutaVisitada);
+
+// ANÁLISIS DEL VALOR DE i:
 console.log("Valor de i después del for con var:", i);
+//Análisis del resultado:
 
-🔍 Qué deben observar los estudiantes
+//¿Qué valor toma i al final? El valor será 5.
 
-El for termina cuando i llega a 5 (porque hay 5 rutas).
+//¿Por qué? El ciclo se detiene cuando i ya no es menor que la longitud del arreglo (que es 5). Como var no respeta el bloque del ciclo for, la variable i sigue existiendo fuera de él y conserva ese último valor (5) que rompió la condición del bucle.
 
-Con var, la variable i sigue existiendo fuera del for.
+//---------------------------------
 
-
-📌 Conclusión del grupo (escriben en su cuaderno):
-
-> Con var, la variable del ciclo no se limita al bloque, sale del for y se puede usar afuera.
-
-
-
----
-
-🔹 3. Recorrido usando let (15–20 min)
-
+//3. Recorrido usando let (Uso de let)
+//Ahora usamos la forma moderna (ES6). let tiene alcance de bloque, lo que significa que la variable solo existe dentro de las llaves { ... } donde fue creada.
 let ultimaRutaVisitadaLet = "";
 
+// Iniciamos el ciclo con let
 for (let j = 0; j < rutas.length; j++) {
-	console.log("Visitando con let:", rutas[j]);
-	ultimaRutaVisitadaLet = rutas[j];
+  console.log("Visitando con let:", rutas[j]);
+  ultimaRutaVisitadaLet = rutas[j];
 }
 
-// console.log(j); // Activar esto para probar qué pasa
+console.log("--- Resultados con LET ---");
 
-🔍 Qué deben observar
-
-Con let, el estudiante prueba si j existe fuera del ciclo.
-
-Si quitan el comentario y ejecutan console.log(j) → da error, porque j desaparece fuera del for.
-
-
-📌 Conclusión del grupo:
-
-> Con let, la variable del ciclo solo existe dentro del bloque del for. Afuera no funciona.
-
-
-
----
-
-🔹 4. Mapa visual (10–15 min)
-
-En una hoja dibujan así:
-
-Inicio → Ruta 1 → Ruta 2 → Ruta 3 → Ruta 4 → Ruta 5 → Fin
-
-Y debajo escriben:
-
-✏️ Explicación final
-
-✔ Con var:
-La variable del ciclo sobrevive después del for.
-Por eso i todavía existe y tiene un valor.
-
-✔ Con let:
-La variable del ciclo solo vive dentro del for.
-Fuera del for, desaparece.
-
-
----
-
-🎉 Resultado Final del Taller
-
-Un recorrido completo impreso en consola.
-
-El valor de la última ruta visitada usando var y usando let.
-
-Un mapa visual de rutas conectadas.
-
-Una comparación clara entre var y let.
-
-
----
-
-Si quieres te lo convierto en formato PDF, diapositivas, o en una cartilla para el salón.
-*/
-
-// Código ejecutable que corresponde a los ejemplos anteriores
-
-// 1) Definir rutas
-// Usamos `const` porque no vamos a reasignar la variable `rutas`.
-// Ojo: `const` evita reasignar la variable, pero los elementos del array sí pueden
-// modificarse (ej. `rutas.push(...)` funcionaría). Aquí tratamos la lista como fija.
-const rutas = ["Ruta 1", "Ruta 2", "Ruta 3", "Ruta 4", "Ruta 5"];
-console.log('\n--- Ejecución de los ejemplos (parte práctica) ---');
-
-// 2) Recorrido usando var
-// `var` tiene alcance de función (o global si no está en función). No respeta el bloque `{}`
-// del `for`, por eso la variable `i` seguirá existiendo después del bucle.
-var ultimaRutaVisitada = ""; // almacenará la última ruta visitada usando var
-for (var i = 0; i < rutas.length; i++) {
-	// Dentro del bucle usamos `i` (declarada con var)
-	console.log("Visitando:", rutas[i]);
-	// Actualizamos la variable externa `ultimaRutaVisitada`
-	ultimaRutaVisitada = rutas[i];
+// PRUEBA DE j FUERA DEL FOR:
+try {
+    console.log(j); 
+} catch (error) {
+    console.log("Error: La variable 'j' no existe fuera del ciclo.");
 }
-// Después del for, `ultimaRutaVisitada` contiene el último elemento visitado
-console.log("Última ruta visitada con var:", ultimaRutaVisitada);
-// Como `i` fue declarada con var, todavía existe aquí y su valor es rutas.length (5)
-console.log("Valor de i después del for con var:", i);
 
-// 3) Recorrido usando let
-// `let` tiene alcance de bloque: la variable usada en el for (aquí `j`) solo vive
-// dentro de las llaves del bucle. Afuera no existe y al intentar acceder dará error.
-let ultimaRutaVisitadaLet = ""; // almacenará la última ruta visitada usando let
-for (let j = 0; j < rutas.length; j++) {
-	// `j` está disponible solo dentro de este bloque
-	console.log("Visitando con let:", rutas[j]);
-	ultimaRutaVisitadaLet = rutas[j];
-}
-// Aquí mostramos la última ruta guardada por el bucle con let
-console.log("Última ruta visitada con let:", ultimaRutaVisitadaLet);
-// Si descomentases `console.log(j)` aquí obtendrías `ReferenceError: j is not defined`.
+//Comparación Final: Var vs. Let
+//Aquí tienes las conclusiones que el grupo debe escribir para finalizar el ejercicio:
 
-// 4) Mapa visual simple
-// Usamos spread `...rutas` para crear un array que incluya Inicio y Fin alrededor
-// de las rutas visitadas. `join(' → ')` une los elementos con flechas.
-console.log('\nMapa visual:');
-console.log(["Inicio", ...rutas, "Fin"].join(' → '));
+//Con var pasa esto con la variable del ciclo: La variable i se "escapa" del ciclo. Se convierte en una variable global (o de la función contenedora), contaminando el entorno y quedando con el valor final del contador (5) incluso después de que el ciclo terminó.
 
-// Explicación final resumida (útil para el cierre del taller)
-console.log('\n✏️ Explicación final:');
-console.log('✔ Con var: la variable del ciclo sobrevive después del for (ámbito de función/global).');
-console.log('✔ Con let: la variable del ciclo solo existe dentro del bloque del for (ámbito de bloque).');
+//Con let pasa esto otro: La variable j vive y muere dentro del ciclo for. Una vez que se cierra la llave }, la variable j desaparece de la memoria. Si intentas acceder a ella fuera, JavaScript te dará un error (ReferenceError), lo cual es más seguro y limpio para la programación.
 
-// Fin del script
+//---------------------------------
+//4. Mapa visual — impresión sencilla en consola
+// Usamos join para unir las rutas con una flecha
+const mapaVisual = rutas.join(" ➡️ ");
 
-
+console.log("--- MAPA DE EXPLORACIÓN ---");
+console.log("🏠 Inicio ➡️ " + mapaVisual + " 🏁 Fin");
+//-------------------------------- 
