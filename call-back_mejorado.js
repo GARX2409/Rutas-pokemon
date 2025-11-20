@@ -1,5 +1,5 @@
 // ===================================================================
-// RUTA POKÉMON CON CALLBACKS
+// RUTA POKÉMON CON CALLBACKS Y BUENAS PRÁCTICAS
 // ===================================================================
 
 // --- 1. Definición estructurada de las rutas ---
